@@ -10,7 +10,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 @CucumberOptions(
     plugin = {"html:target/cucumber"},
     features = "src/test/resources/features/",
-    glue = "java/step_definitions",
+    glue = "step_definitions",
     tags = "@any",
     dryRun = false
 )
