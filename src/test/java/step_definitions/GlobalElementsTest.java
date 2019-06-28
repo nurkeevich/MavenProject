@@ -2,6 +2,8 @@ package step_definitions;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import pages.GlobalTopElements;
 
 import org.openqa.selenium.WebDriver;
@@ -30,5 +32,21 @@ public class GlobalElementsTest {
     @Then("Verifies Sign Up button is displayed")
     public void verifiesSignUpButtonIsDisplayed() {
         Assert.assertEquals(globaleTopElements.SignUp.isDisplayed(), true);
+    }
+
+    @Given("User locates Switch to Alert Button using Xpath and enters credentials")
+    public void userLocatesSwitchToAlertButtonUsingXpathAndEntersCredentials() {
+        driver.findElement(By.xpath("//input[@id='name']")).sendKeys("bermet");
+    }
+
+    @When("User clicks the  button for alert popup box")
+    public void userClicksTheButtonForAlertPopupBox() {
+        driver.findElement(By.xpath("//input[@id='alertbtn']")).click();
+    }
+
+    @Then("User gets the displayed text of the alert popup and prints it to console")
+    public void userGetsTheDisplayedTextOfTheAlertPopupAndPrintsItToConsole() {
+        String text = driver.switchTo().alert().getText();
+        System.out.println("text");
     }
 }

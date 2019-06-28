@@ -4,4 +4,13 @@ Feature: Global elements
       Given User navigates to "https://learn.letskodeit.com/p/practice" practice page
       Then Verifies Practice button is displayed
       Then Verifies Login button is displayed
-      Then Verifies Sign Up button is displayed 
+      Then Verifies Sign Up button is displayed
+
+   Scenario: Switch To Alert test scenario
+      Given User locates Switch to Alert Button using Xpath and enters credentials
+      When User clicks the  button for alert popup box
+      Then User gets the displayed text of the alert popup and prints it to console
+      And User accepts the alert popup
+      And User locates Confirm Button using Xpath
+      Then User dismisses the confirm popup
+      And User accepts the confirm popup
