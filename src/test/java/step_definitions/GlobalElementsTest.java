@@ -1,5 +1,6 @@
 package step_definitions;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -48,5 +49,10 @@ public class GlobalElementsTest {
     public void userGetsTheDisplayedTextOfTheAlertPopupAndPrintsItToConsole() {
         String text = driver.switchTo().alert().getText();
         System.out.println("text");
+    }
+
+    @And("User accepts the alert popup")
+    public void userAcceptsTheAlertPopup() {
+        driver.switchTo().alert().accept();
     }
 }
