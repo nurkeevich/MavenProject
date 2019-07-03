@@ -2,6 +2,7 @@ package runners;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.testng.annotations.Test;
 
 /**
  * RunnerClass
@@ -16,5 +17,6 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 )
 
 public class RunnerClass extends AbstractTestNGCucumberTests {
+
    
 }

@@ -55,4 +55,17 @@ public class GlobalElementsTest {
     public void userAcceptsTheAlertPopup() {
         driver.switchTo().alert().accept();
     }
+
+
+    @Then("User locates Confirm Button using Xpath and User dismisses the confirm popup")
+    public void userLocatesConfirmButtonUsingXpathAndUserDismissesTheConfirmPopup() {
+        driver.findElement(By.xpath("//input[@id='confirmbtn']")).click();
+        driver.switchTo().alert().dismiss();
+
+    }
+
+    @And("User accepts the confirm popup")
+    public void userAcceptsTheConfirmPopup() {
+        driver.switchTo().alert().accept();
+    }
 }
