@@ -14,3 +14,12 @@ Feature: Global elements
       And User accepts the alert popup
       Then User locates Confirm Button using Xpath and User dismisses the confirm popup
       And User accepts the confirm popup
+
+    @test3
+      Scenario: Mouse hover example
+         Given Launch Browser
+         When User moves mouse over Mouse Hover Button
+         Then Option panel should be displayed
+         Then User selects Top Option and Scrolls to the top of app page
+         And User selects Reload Option and web page should be reloaded
+
