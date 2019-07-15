@@ -16,6 +16,10 @@ import utilities.Driver;
 public class GlobalElementsTest {
     private WebDriver driver = Driver.getDriver();
     private GlobalTopElements globaleTopElements = new GlobalTopElements();
+    Actions action = new Actions(driver);
+//    WebElement top = driver.findElement(By.xpath("//a[contains(text(),'Top')]"));
+//    WebElement reload = driver.findElement(By.xpath("//a[contains(text(),'Reload')]"));
+
 
     @Given("User navigates to {string} practice page")
     public void userNavigatesToPracticePage(String URL) {
@@ -72,35 +76,38 @@ public class GlobalElementsTest {
         driver.quit();
     }
 
-    @Given("Launch Browser")
-    public void launchBrowser() {
-        driver.get("https://learn.letskodeit.com/p/practice#top");
 
+    @Given("User navigates to {string}")
+    public void userNavigatesTo(String URL) {
+        driver.navigate().to(URL);
     }
 
     @When("User moves mouse over Mouse Hover Button")
     public void userMovesMouseOverMouseHoverButton() {
-        WebElement element = driver.findElement(By.xpath("//button[@id='mousehover']"));
-        Actions act = new Actions(driver);
-        act.moveToElement(element).perform();
+        WebElement mouseHover = driver.findElement(By.xpath("//button[@id='mousehover']"));
+        action.moveToElement(mouseHover).perform();
     }
 
-    @Then("Option panel should be displayed")
-    public void optionPanelShouldBeDisplayed() {
-        driver.getTitle();
-        
+    @Then("Top and Reload panel should be displayed")
+    public void topAndReloadPanelShouldBeDisplayed() {
+        WebElement top = driver.findElement(By.xpath("//a[contains(text(),'Top')]"));
+        WebElement reload = driver.findElement(By.xpath("//a[contains(text(),'Reload')]"));
+        Assert.assertEquals(top.isDisplayed(), true);
+        Assert.assertEquals(reload.isDisplayed(), true);
     }
 
-    @Then("User selects Top Option and Scrolls to the top of app page")
-    public void userSelectsTopOptionAndScrollsToTheTopOfAppPage() {
-        driver.findElement(By.xpath("//a[contains(text(),'Top')]")).click();
 
-        
+    @Then("User selects Top Option and scrolls to Top of page")
+    public void userSelectsTopOptionAndScrollsToTopOfPage() {
+        WebElement top = driver.findElement(By.xpath("//a[contains(text(),'Top')]"));
+        top.click();
     }
+
 
     @And("User selects Reload Option and web page should be reloaded")
     public void userSelectsReloadOptionAndWebPageShouldBeReloaded() {
-        driver.findElement(By.xpath("//a[contains(text(),'Reload')]")).click();
-
+        WebElement reload = driver.findElement(By.xpath("//a[contains(text(),'Reload')]"));
+        reload.click();
     }
 }
+
